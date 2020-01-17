@@ -12,7 +12,7 @@
 namespace APY\BreadcrumbTrailBundle\EventListener;
 
 use Doctrine\Common\Annotations\Reader;
-use Symfony\Component\HttpKernel\Event\FilterControllerEvent;
+use Symfony\Component\HttpKernel\Event\ControllerEvent;
 use APY\BreadcrumbTrailBundle\BreadcrumbTrail\Trail;
 use APY\BreadcrumbTrailBundle\Annotation\Breadcrumb;
 use Symfony\Component\HttpKernel\HttpKernelInterface;
@@ -43,9 +43,9 @@ class BreadcrumbListener
     }
 
     /**
-     * @param FilterControllerEvent $event A FilterControllerEvent instance
+     * @param ControllerEvent $event A ControllerEvent instance
      */
-    public function onKernelController(FilterControllerEvent $event)
+    public function onKernelController(ControllerEvent $event)
     {
         if (!is_array($controller = $event->getController())) {
             return;
